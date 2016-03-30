@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login.html</title>
+        <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+        <script type="text/javascript">
+             function onClickUploadButton(){
+                window.demo.selectPicture();
+                document.getElementById("pic").src = window.demo.getPicUri();
+             }
+             function coClickTextbegin(){
+                window.demo.selectBeginTime();
+                document.getElementById("begin").value = window.demo.getTime();;
+             }
+             function coClickTextfinish(){
+                window.demo.selectBeginTime();
+                document.getElementById("finish").value=window.demo.getTime();
+             }
+             function onClickLoginButton(){
+                 var th = document.form1;
+                 if(th.username.value == ""){
+                    window.demo.toastMessage("账号不能为空");
+                    th.username.focus();
+                    return;
+                 }
+                 if(th.password.value == ""){
+                    window.demo.toastMessage("密码不能为空");
+                    th.password.focus();
+                    return;
+             }
+             document.getElementById("begin").value=window.demo.getTime();
+             window.demo.login(th.username.value, th.password.value);
+         }
+        </script>
+       
+    </head>
+    <body>
+    <form action="" name="form1" class=center>
+        账号:<input type="text" name="username"><br>
+        密码:<input type="text" name="password"><br>
+        开始时间:<input type="text" name="begin" id="begin" value=""
+                    onclick="coClickTextbegin()"><br>
+        结束时间:<input type="text" name="finish" id="finish" value=""
+                    onclick="coClickTextfinish()"><br>
+        <input type="button" value="登录" onclick="onClickLoginButton()">
+        <a href='register.html'><input type="button" value="注册" ></a>
+        <input type="button" value="选择照片" onclick="onClickUploadButton()">
+        <input type="button" value="上传照片" onclick="window.demo.doPost()">
+        <input type="image" id="pic" width="300" height="300">
+    </form>
+    </body>
+</html>

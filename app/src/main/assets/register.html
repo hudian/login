@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册</title>
+    <script type="text/javascript">
+    function toastMessage(message) {
+        window.demo.toastMessage(message);
+    }
+    function register(){
+		var th = document.form1;
+    	if(th.setusername.value==""){
+    		window.demo.toastMessage("账号不能为空");
+    		th.setusername.focus();
+    		return;
+    	}
+    	if(th.setpswd.value==""){
+    		toastMessage("密码不能为空");
+    		th.setpswd.focus();
+    		return;
+    	}
+    	if(th.setpswdag.value==""){
+    		toastMessage("重复密码不能为空");
+    		th.setpswdag.focus();
+    		return;
+    	}
+    	if(th.setpswdag.value!=th.setpswd.value){
+    		toastMessage("密码与重复密码不一样");
+    		th.setpswd.focus();
+    		return;
+    	}
+    	window.demo.Register("file:///android_asset/login.html",
+    	th.setusername.value,th.setpswd.value);
+    	th.submit();
+    }
+    </script>
+	<style type="text/css">
+		.center {
+		position: absolute;
+		top: 30%;
+		left: 30%;
+		height: 30%;
+		width: 30%;
+		}
+	</style>
+</head>
+
+<body>
+<form action="" name="form1" method="post" class=center>
+账号:<input type="text" name="setusername"><br>
+密码:<input type="text" name="setpswd"><br>
+重复密码:<input type="text" name="setpswdag"><br>
+<input type="button" value="确定" onclick="register()">
+</form>
+</body>
+</html>
